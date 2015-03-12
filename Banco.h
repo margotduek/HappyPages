@@ -1,10 +1,11 @@
 
-#include <iostream>
-#include <string>
-#include <ostream>
-#include "Persona.h"
 
-class Banco{
+
+class Banco {
     private:
-        LinkedList<Persona> personas;
+        std::string nombre;
+    public:
+        Banco();
+        Banco(std::string _nombre) : nombre(_nombre){}
 };
+

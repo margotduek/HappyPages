@@ -1,7 +1,7 @@
 #include "EdoDeCuenta.h"
 
 bool EdoDeCuenta::operator  == (EdoDeCuenta & edoDeCuenta){
-    if(edoDeCuenta.idEdoDeCuenta == edoDeCuenta){
+    if(edoDeCuenta.idEdoDeCuenta == idEdoDeCuenta){
         return true;
     }else {
         return false;
@@ -19,6 +19,7 @@ std::ostream & operator << (std::ostream & os,  const EdoDeCuenta & edoDeCuenta)
 int EdoDeCuenta::getIdEdoDeCuenta(){
     return idEdoDeCuenta;
 }
+
 /*void EdoDeCuenta::setIdEdoDeCuenta(int id){
     this->idEdoDeCuenta = id;
 }*/
@@ -38,6 +39,9 @@ double EdoDeCuenta::getIngresosTotales(){
 std::string EdoDeCuenta::getNotas(){
     return notas;
 }
-void EdoDeCuenta::setNotas(std::string nuevaNota){
-    this->nota = nuevaNota;
+void EdoDeCuenta::setNotas(std::string notas){
+    this->notas = notas;
+}
+Banco EdoDeCuenta::getBanco(){
+    return banco;
 }

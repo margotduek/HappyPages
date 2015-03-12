@@ -9,6 +9,7 @@ Clase Persona
 #include <string>
 #include <ostream>
 #include "EdoDeCuenta.h"
+#include "LinkedList.h"
 
 class Persona {
 private:
@@ -16,16 +17,17 @@ private:
     std::string apellidos;
     int numCliente;
     int edad;
-    int anioNacimiento;
+    int fNacimiento;
     LinkedList<EdoDeCuenta> estadosDeCuent;
     
 public:
     Persona() : Persona("", "", 0, 0, 0) {}
-    Persona(std::string _nombre, std::string _apellidos , int _edad, int _fNacimiento, int _numCliente) : nombre(_nombre), apellidos(_apellidos), edad(_edad), fNacimiento(_fNacimiento), numCliente(_numCliiente) {}
+    Persona(std::string _nombre, std::string _apellidos , int _edad, int _fNacimiento, int _numCliente) : nombre(_nombre), apellidos(_apellidos), edad(_edad), fNacimiento(_fNacimiento), numCliente(_numCliente) {}
     
     bool operator >(Persona & persona);
     bool operator <(Persona & persona);
     bool operator  == (Persona & persona);
+    void agregarEdoDeCuenta(EdoDeCuenta nuevoEstado);
     
     friend std::ostream & operator << (std::ostream & os, const Persona & persona);
     

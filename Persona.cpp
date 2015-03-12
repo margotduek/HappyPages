@@ -39,3 +39,8 @@ bool Persona::operator  == (Persona & persona){
         return false;
     }
 }
+
+
+void Persona::agregarEdoDeCuenta(EdoDeCuenta nuevoEstado){
+    estadosDeCuent.insertBack(nuevoEstado);
+}
