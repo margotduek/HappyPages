@@ -42,5 +42,5 @@ bool Persona::operator  == (Persona & persona){
 
 
 void Persona::agregarEdoDeCuenta(EdoDeCuenta nuevoEstado){
-    estadosDeCuent.insertBack(nuevoEstado);
+    estadosDeCuent->insertBack(nuevoEstado);
 }

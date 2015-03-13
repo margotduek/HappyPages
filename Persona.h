@@ -18,7 +18,7 @@ private:
     int numCliente;
     int edad;
     int fNacimiento;
-    LinkedList<EdoDeCuenta> estadosDeCuent;
+    LinkedList<EdoDeCuenta> * estadosDeCuent = new LinkedList<EdoDeCuenta>;
     
 public:
     Persona() : Persona("", "", 0, 0, 0) {}
