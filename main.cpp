@@ -9,15 +9,19 @@ Main
 
 using namespace std;
 
-void navega();
+
+LinkedList<Persona> * personas = new LinkedList<Persona>();
+
+void navega(int n);
+
 int main(){
     
-    LinkedList<Persona> * personas = new LinkedList<Persona>();
     
     cout << "¡Bienvenido a Happy Pages!" << endl;
     int op = 0;
-    while(op != 4){
-        cout << "1) Iniciar sesión \n2) Registarme como nuevo usuario" << endl;
+    int hile = 0;
+    while(hile != 666){
+        cout << "1) Iniciar sesión \n2) Registarme como nuevo usuario\n3) Salir" << endl;
         cin >> op;
         if (op == 1){
             cout << "Nombre: " ;
@@ -29,8 +33,9 @@ int main(){
             cout << "Número de cliente: " ;
             int num;
             cin >> num;
-            
-            /* Falta! Buscar cliente e imprimirlo*/
+
+            navega(num);
+
         }else if(op == 2){
             cout << "Bienvenido, es hora de darte de alta como cliente de Happy Pages" << endl;
             cout << "Por favor proporcione los siguientes datos" << endl;
@@ -57,8 +62,11 @@ int main(){
             
             Persona persona(nombre, apellido, edad, fech, num);
             personas->insertBack(persona);
+            
+            navega(num);
         }else if(op == 3){
             cout << "Gracias por usar Happy Pages" << endl;
+            hile = 666;
         }else{
              cout << "Favor de elegir una opción existente" << endl;
         }
@@ -66,9 +74,19 @@ int main(){
     return 0;
 }
 
-void navega(){
+
+
+void navega(int n){
     int whilo = 0;
+    Persona persona;
     while (whilo != 666){
+        for (int i = 0; i < personas->size(); ++i){
+            if(personas->at(i)->getInfo().getNumCliente() == n){
+                persona = personas->at(i)->getInfo();
+                cout << persona.getNombre() << endl;
+            }
+        }
+        
         cout << "1) Agregar estado de cuenta\n2) Consultar estados de cuenta globales" << endl;
         cout << "3) Consultar estados de cuenta por mes\n4) Consultar estados de cuenta por año" << endl;
         cout << "5) Salir de esta sesión" << endl;
@@ -76,9 +94,42 @@ void navega(){
         cin >> op;
         switch(op){
             case 1:{
+                cout << "Favor de proporcionar los siguientes datos: " << endl;
+                cout << "ID del estado de cuenta: ";
+                int id;
+                cin >> id;
                 
+                cout << "Mes: ";
+                string mes;
+                cin >> mes;
+                
+                cout << "Año: " ;
+                int anio;
+                cin >> anio;
+                
+                cout << "Gastos totales: ";
+                double gastos;
+                cin >> gastos;
+                
+                cout << "Ingresos totales: ";
+                double ingresos;
+                cin >> ingresos;
+                
+                cout << "Notas: ";
+                string notas;
+                cin >> notas;
+                
+                cout << "Banco: ";
+                string banco;
+                cin >> banco;
+                
+                EdoDeCuenta edo(id, mes, anio, gastos, ingresos, notas, banco);
+                persona.agregarEdoDeCuenta(edo);
+                
+                cout << "Estado de cuenta agregado" << endl;
+                 break;
             }
-            break;
+           
             
             case 2:{
                 
@@ -96,7 +147,8 @@ void navega(){
             break;
             
             case 5:{
-                cout << "Cerraste sesióon" << endl;
+                //cout << "Cerraste sesióon" << endl;
+                whilo = 666;
             }
             break;
             

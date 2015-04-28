@@ -1,5 +1,12 @@
 #include "Persona.h"
 
+int Persona::getNumCliente(){
+    return numCliente;
+}
+
+std::string Persona::getNombre(){
+    return nombre;
+}
 
 bool Persona::operator >(Persona & persona)
 {
