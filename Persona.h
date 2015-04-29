@@ -26,6 +26,7 @@ public:
     
     int getNumCliente();
     std::string getNombre();
+    std::string getApellido();
     
     bool operator >(Persona & persona);
     bool operator <(Persona & persona);

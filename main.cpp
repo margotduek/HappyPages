@@ -6,6 +6,7 @@ Por investigar:
     - Como validar que un cin es del tipo de varable que quieres
     - Como imprimir listas dentro de una clase
     - Poner simbolos en un string
+    
 
 
 */
@@ -40,7 +41,16 @@ int main(){
             cin >> apellido;
             cout << "Número de cliente: " ;
             int num;
-            cin >> num;
+            string snum;
+            cin >> snum;
+            while (!valida(snum)){
+                cout << "Recuerda poner solamente números" << endl;
+                cout << "Número de cliente: ";
+                cin >> snum;
+            }
+            num = stoi(snum); 
+            
+        
 
             navega(num);
 
@@ -58,15 +68,37 @@ int main(){
             
             cout << "Número de cliente: " ;
             int num;
-            cin >> num;
+            string snum;
+            cin >> snum;
+            while (!valida(snum)){
+                cout << "Recuerda poner solamente números" << endl;
+                cout << "Número de cliente: ";
+                cin >> snum;
+            }
+            num = stoi(snum); 
             
             cout << "Edad: ";
             int edad;
-            cin >> edad;
+            string sedad;
+            cin >> sedad;
+            while (!valida(sedad)){
+                cout << "Recuerda poner solamente números" << endl;
+                cout << "Edad: ";
+                cin >> sedad;
+            }
+            edad = stoi(sedad); 
             
             cout << "Año nacimiento:" ;
             int fech;
-            cin >> fech;
+            string sfech;
+            cin >> sfech;
+            while (!valida(sfech)){
+                cout << "Recuerda poner solamente números" << endl;
+                cout << "Año nacimiento: ";
+                cin >> sfech;
+            }
+            fech = stoi(sfech); 
+            
             
             Persona persona(nombre, apellido, edad, fech, num);
             personas->insertBack(persona);
@@ -94,7 +126,7 @@ void navega(int n){
                 persona = personas->at(i)->getInfo();
                 cout << endl;
                 
-                cout << "Bienvend@   " << persona.getNombre() << endl;
+                cout << "Bienvend@   " << persona.getNombre() << "  " << persona.getApellido() << endl;
             }
         }
         if(persona.getNumCliente() != n){
@@ -115,31 +147,55 @@ void navega(int n){
                 string sid;
                 cin >> sid;
                 int id;
-                if (valida(sid)){
+                while (!valida(sid)){
                     cout << "Recuerda poner solamente números" << endl;
-                }else{
-                    id = stoi(sid);    
+                    cout << "ID del estado de cuenta: ";
+                    cin >> sid;
                 }
+                id = stoi(sid);    
+                
                 
                 cout << "Mes: ";
                 string mes;
                 cin >> mes;
                 
                 cout << "Año: " ;
+                string sanio;
                 int anio;
-                cin >> anio;
+                cin >> sanio;
+                while (!valida(sanio)){
+                    cout << "Recuerda poner solamente números" << endl;
+                    cout << "Año: ";
+                    cin >> sanio;
+                }
+                anio = stoi(sanio); 
                 
                 cout << "Gastos totales: ";
                 double gastos;
-                cin >> gastos;
+                string sgastos;
+                cin >> sgastos;
+                while (!valida(sgastos)){
+                    cout << "Recuerda poner solamente números" << endl;
+                    cout << "Gastos totales: ";
+                    cin >> sgastos;
+                }
+                gastos = stod(sgastos); 
                 
                 cout << "Ingresos totales: ";
                 double ingresos;
-                cin >> ingresos;
+                string singresos;
+                cin >> singresos;
+                while (!valida(singresos)){
+                    cout << "Recuerda poner solamente números" << endl;
+                    cout << "Ingresos totales: ";
+                    cin >> singresos;
+                }
+                ingresos = stod(singresos);
                 
                 cout << "Notas: ";
                 string notas;
                 //cin >> notas;
+                cin.ignore();
                 getline(cin,notas);
                 
                 cout << "Banco: ";
@@ -207,23 +263,23 @@ bool valida(string a){
     for(int i = 0; i < a.length(); ++i){
         if(a[i] == 0){
             booleana = true;        
-        }else if( a[i] == 1 ){
+        }else if( a[i] == '1' ){
             booleana = true;  
-        }else if( a[i] == 2 ){
+        }else if( a[i] == '2' ){
             booleana = true;  
-        }else if( a[i] == 3 ){
+        }else if( a[i] == '3' ){
             booleana = true;  
-        }else if( a[i] == 4 ){
+        }else if( a[i] == '4' ){
             booleana = true;  
-        }else if( a[i] == 5 ){
+        }else if( a[i] == '5' ){
             booleana = true;  
-        }else if( a[i] == 6 ){
+        }else if( a[i] == '6' ){
             booleana = true;  
-        }else if( a[i] == 7 ){
+        }else if( a[i] == '7' ){
             booleana = true;  
-        }else if( a[i] == 8 ){
+        }else if( a[i] == '8' ){
             booleana = true;  
-        }else if( a[i] == 9 ){
+        }else if( a[i] == '9' ){
             booleana = true;  
         }else{
             return false;  

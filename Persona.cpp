@@ -4,6 +4,10 @@ int Persona::getNumCliente(){
     return numCliente;
 }
 
+std::string Persona::getApellido(){
+    return apellidos;
+}
+
 std::string Persona::getNombre(){
     return nombre;
 }
