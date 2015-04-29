@@ -28,10 +28,20 @@ int main(){
     
     cout << "¡Bienvenido a Happy Pages!" << endl;
     int op = 0;
+ 
     int hile = 0;
     while(hile != 666){
         cout << "1) Iniciar sesión \n2) Registarme como nuevo usuario\n3) Salir" << endl;
-        cin >> op;
+           string sop;
+        cin >> sop;
+        
+        while (!valida(sop)){
+            cout << "Recuerda poner solamente números" << endl;
+            cout << "1) Iniciar sesión \n2) Registarme como nuevo usuario\n3) Salir";
+            cin >> sop;
+        }
+        op = stoi(sop); 
+        
         if (op == 1){
             cout << "Nombre: " ;
             string nombre;
@@ -50,8 +60,6 @@ int main(){
             }
             num = stoi(snum); 
             
-        
-
             navega(num);
 
         }else if(op == 2){
@@ -119,26 +127,42 @@ int main(){
 void navega(int n){
     int whilo = 0;
     Persona persona;
+    bool registrado = false;
     while (whilo != 666){
-        
         for (int i = 0; i < personas->size(); ++i){
             if(personas->at(i)->getInfo().getNumCliente() == n){
                 persona = personas->at(i)->getInfo();
                 cout << endl;
                 
                 cout << "Bienvend@   " << persona.getNombre() << "  " << persona.getApellido() << endl;
+                registrado = true;
             }
         }
-        if(persona.getNumCliente() != n){
+        if(!registrado){
             cout << "Primero dese de alta como cliente" << endl;
             whilo = 666;
-        }
+            return;
+        }  
+       
+            
         
         cout << "1) Agregar estado de cuenta\n2) Consultar estados de cuenta globales" << endl;
         cout << "3) Consultar estados de cuenta por mes\n4) Consultar estados de cuenta por año" << endl;
-        cout << "5) Salir de esta sesión" << endl;
+        cout << "5) Conocer mis gastos totales del mes\n6) Conocer mis ingresos totales del mes" << endl;
+        cout << "7) Salir de esta sesión" << endl;
         int op;
-        cin >> op;
+        string sop;
+        cin >> sop;
+        
+        while (!valida(sop)){
+            cout << "Recuerda poner solamente números" << endl;
+            cout << "1) Agregar estado de cuenta\n2) Consultar estados de cuenta globales" << endl;
+            cout << "3) Consultar estados de cuenta por mes\n4) Consultar estados de cuenta por año" << endl;
+            cout << "5) Conocer mis gastos totales del mes\n6) Conocer mis ingresos totales del mes" << endl;
+            cout << "7) Salir de esta sesión" << endl;
+            cin >> sop;
+        }
+        op = stoi(sop); 
         switch(op){
             case 1:{
                 cout << "Favor de proporcionar los siguientes datos: " << endl;
@@ -244,6 +268,15 @@ void navega(int n){
             break;
             
             case 5:{
+                double gastosGlobales;
+                for(int i = 0; i < persona.getSizeList(); ++i){
+                    gastosGlobales += persona.getLista()->at(i)->getInfo().getGastosTotales();
+                }
+                cout << "Usted gastó: $" << gastosGlobales << endl;
+            }
+            break;
+            
+            case 7:{
                 //cout << "Cerraste sesióon" << endl;
                 whilo = 666;
             }
@@ -261,7 +294,7 @@ void navega(int n){
 bool valida(string a){
     bool booleana = true;
     for(int i = 0; i < a.length(); ++i){
-        if(a[i] == 0){
+        if(a[i] == '0'){
             booleana = true;        
         }else if( a[i] == '1' ){
             booleana = true;  
