@@ -14,6 +14,7 @@ Por investigar:
 #include "Persona.h"
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ int main(){
     int hile = 0;
     while(hile != 666){
         cout << "1) Iniciar sesión \n2) Registarme como nuevo usuario\n3) Salir" << endl;
-           string sop;
+        string sop;
         cin >> sop;
         
         while (!valida(sop)){
@@ -40,7 +41,13 @@ int main(){
             cout << "1) Iniciar sesión \n2) Registarme como nuevo usuario\n3) Salir";
             cin >> sop;
         }
-        op = stoi(sop); 
+        try {
+            op = stoi(sop);
+        }
+        catch (const out_of_range & exception){
+            cout << "No te pases de listo :) " << endl;
+        }
+        
         
         if (op == 1){
             cout << "Nombre: " ;
@@ -158,11 +165,19 @@ void navega(int n){
             cout << "Recuerda poner solamente números" << endl;
             cout << "1) Agregar estado de cuenta\n2) Consultar estados de cuenta globales" << endl;
             cout << "3) Consultar estados de cuenta por mes\n4) Consultar estados de cuenta por año" << endl;
-            cout << "5) Conocer mis gastos totales del mes\n6) Conocer mis ingresos totales del mes" << endl;
+            cout << "5) Conocer mis gastos totales\n6) Conocer mis ingresos totales" << endl;
             cout << "7) Salir de esta sesión" << endl;
             cin >> sop;
         }
-        op = stoi(sop); 
+        try {
+            op = stoi(sop);
+        }
+        catch (const out_of_range & exception){
+            cout << "No te pases de listo :) " << endl;
+        }
+        
+        
+        
         switch(op){
             case 1:{
                 cout << "Favor de proporcionar los siguientes datos: " << endl;
@@ -275,6 +290,17 @@ void navega(int n){
                 cout << "Usted gastó: $" << gastosGlobales << endl;
             }
             break;
+            
+            case 6:{
+                double ingresosGlogales;
+                for(int i = 0; i < persona.getSizeList(); ++i){
+                    ingresosGlogales += persona.getLista()->at(i)->getInfo().getIngresosTotales();
+                }
+                cout << "Usted ganó: $" << ingresosGlogales << endl;
+            }
+            break;
+            
+            
             
             case 7:{
                 //cout << "Cerraste sesióon" << endl;
