@@ -30,7 +30,11 @@ public:
     bool operator >(Persona & persona);
     bool operator <(Persona & persona);
     bool operator  == (Persona & persona);
+    
     void agregarEdoDeCuenta(EdoDeCuenta nuevoEstado);
+    void imprimeLista();
+    int getSizeList();
+    LinkedList<EdoDeCuenta>* getLista();
     
     friend std::ostream & operator << (std::ostream & os, const Persona & persona);
     

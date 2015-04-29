@@ -8,6 +8,18 @@ std::string Persona::getNombre(){
     return nombre;
 }
 
+void Persona::imprimeLista(){
+    std::cout <<  *estadosDeCuent << std::endl;    
+}
+ 
+int Persona::getSizeList(){
+    return estadosDeCuent->size();
+}
+
+LinkedList<EdoDeCuenta>*  Persona::getLista(){
+    return estadosDeCuent;
+}
+
 bool Persona::operator >(Persona & persona)
 {
     if (apellidos > persona.apellidos) {

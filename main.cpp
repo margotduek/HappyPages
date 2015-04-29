@@ -1,6 +1,13 @@
 /*
 Main
 
+
+Por investigar:
+    - Como validar que un cin es del tipo de varable que quieres
+    - Como imprimir listas dentro de una clase
+    - Poner simbolos en un string
+
+
 */
 
 #include "Persona.h"
@@ -13,6 +20,7 @@ using namespace std;
 LinkedList<Persona> * personas = new LinkedList<Persona>();
 
 void navega(int n);
+bool valida(string a);
 
 int main(){
     
@@ -56,7 +64,7 @@ int main(){
             int edad;
             cin >> edad;
             
-            cout << "Fecha de nacimiento:" ;
+            cout << "Año nacimiento:" ;
             int fech;
             cin >> fech;
             
@@ -80,11 +88,18 @@ void navega(int n){
     int whilo = 0;
     Persona persona;
     while (whilo != 666){
+        
         for (int i = 0; i < personas->size(); ++i){
             if(personas->at(i)->getInfo().getNumCliente() == n){
                 persona = personas->at(i)->getInfo();
-                cout << persona.getNombre() << endl;
+                cout << endl;
+                
+                cout << "Bienvend@   " << persona.getNombre() << endl;
             }
+        }
+        if(persona.getNumCliente() != n){
+            cout << "Primero dese de alta como cliente" << endl;
+            whilo = 666;
         }
         
         cout << "1) Agregar estado de cuenta\n2) Consultar estados de cuenta globales" << endl;
@@ -95,9 +110,16 @@ void navega(int n){
         switch(op){
             case 1:{
                 cout << "Favor de proporcionar los siguientes datos: " << endl;
+                
                 cout << "ID del estado de cuenta: ";
+                string sid;
+                cin >> sid;
                 int id;
-                cin >> id;
+                if (valida(sid)){
+                    cout << "Recuerda poner solamente números" << endl;
+                }else{
+                    id = stoi(sid);    
+                }
                 
                 cout << "Mes: ";
                 string mes;
@@ -127,22 +149,40 @@ void navega(int n){
                 persona.agregarEdoDeCuenta(edo);
                 
                 cout << "Estado de cuenta agregado" << endl;
-                 break;
+                
             }
-           
+            break;
             
             case 2:{
-                
+                persona.imprimeLista();
             }
             break;
             
             case 3:{
-                
+                 cout << "Ingrese el mes que desea consultar" << endl;
+                 string consultarMes;
+                 cin >> consultarMes;
+                 for(int i  = 0; i < persona.getSizeList(); ++i){
+                     if(persona.getLista()->at(i)->getInfo().getMes() == consultarMes){
+                         cout << persona.getLista()->at(i)->getInfo() << endl;
+                     } else {
+                         cout << "Aun no has ingresado nungun estado de cuenta de ese mes" << endl;
+                     }
+                 }
             }
             break;
             
             case 4:{
-                
+                cout << "Ingrese el año que desea consultar" << endl;
+                string consultarAnio;
+                cin >> consultarAnio;
+                for(int i  = 0; i < persona.getSizeList(); ++i){
+                    if(persona.getLista()->at(i)->getInfo().getAnio() == consultarAnio){
+                        cout << persona.getLista()->at(i)->getInfo() << endl;
+                    } else {
+                        cout << "Aun no has ingresado nungun estado de cuenta de ese año" << endl;
+                    }
+                }
             }
             break;
             
@@ -159,4 +199,35 @@ void navega(int n){
         }
         
     }
+}
+
+bool valida(string a){
+    bool booleana = true;
+    for(int i = 0; i < a.length(); ++i){
+        if(a[i] == 0){
+            booleana = true;        
+        }else if( a[i] == 1 ){
+            booleana = true;  
+        }else if( a[i] == 2 ){
+            booleana = true;  
+        }else if( a[i] == 3 ){
+            booleana = true;  
+        }else if( a[i] == 4 ){
+            booleana = true;  
+        }else if( a[i] == 5 ){
+            booleana = true;  
+        }else if( a[i] == 6 ){
+            booleana = true;  
+        }else if( a[i] == 7 ){
+            booleana = true;  
+        }else if( a[i] == 8 ){
+            booleana = true;  
+        }else if( a[i] == 9 ){
+            booleana = true;  
+        }else{
+            return false;  
+        }
+    }
+    return booleana;
+    
 }
