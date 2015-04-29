@@ -139,7 +139,8 @@ void navega(int n){
                 
                 cout << "Notas: ";
                 string notas;
-                cin >> notas;
+                //cin >> notas;
+                getline(cin,notas);
                 
                 cout << "Banco: ";
                 string banco;
@@ -174,7 +175,7 @@ void navega(int n){
             
             case 4:{
                 cout << "Ingrese el año que desea consultar" << endl;
-                string consultarAnio;
+                int consultarAnio;
                 cin >> consultarAnio;
                 for(int i  = 0; i < persona.getSizeList(); ++i){
                     if(persona.getLista()->at(i)->getInfo().getAnio() == consultarAnio){
