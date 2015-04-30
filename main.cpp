@@ -23,6 +23,7 @@ LinkedList<Persona> * personas = new LinkedList<Persona>();
 
 void navega(int n);
 bool valida(string a);
+bool validad(string a);
 
 int main(){
     
@@ -250,7 +251,7 @@ void navega(int n){
                 double gastos;
                 string sgastos;
                 cin >> sgastos;
-                while (!valida(sgastos)){
+                while (!validad(sgastos)){
                     cout << "Recuerda poner solamente números" << endl;
                     cout << "Gastos totales: ";
                     cin >> sgastos;
@@ -268,7 +269,7 @@ void navega(int n){
                 double ingresos;
                 string singresos;
                 cin >> singresos;
-                while (!valida(singresos)){
+                while (!validad(singresos)){
                     cout << "Recuerda poner solamente números" << endl;
                     cout << "Ingresos totales: ";
                     cin >> singresos;
@@ -393,6 +394,41 @@ bool valida(string a){
         }else if( a[i] == '9' ){
             booleana = true;  
         }else{
+            return false;  
+        }
+    }
+    return booleana;
+    
+}
+
+
+bool validad(string a){
+    bool booleana = true;
+    for(int i = 0; i < a.length(); ++i){
+        if(a[i] == '0'){
+            booleana = true;        
+        }else if( a[i] == '1' ){
+            booleana = true;  
+        }else if( a[i] == '2' ){
+            booleana = true;  
+        }else if( a[i] == '3' ){
+            booleana = true;  
+        }else if( a[i] == '4' ){
+            booleana = true;  
+        }else if( a[i] == '5' ){
+            booleana = true;  
+        }else if( a[i] == '6' ){
+            booleana = true;  
+        }else if( a[i] == '7' ){
+            booleana = true;  
+        }else if( a[i] == '8' ){
+            booleana = true;  
+        }else if( a[i] == '9' ){
+            booleana = true;  
+        }else if(a[i] == '.'){
+            booleana = true;
+        }
+        else{
             return false;  
         }
     }
