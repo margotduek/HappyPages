@@ -65,7 +65,13 @@ int main(){
                 cout << "Número de cliente: ";
                 cin >> snum;
             }
-            num = stoi(snum); 
+            try {
+                num = stoi(snum); 
+            }
+            catch (const out_of_range & exception){
+                cout << "No te pases de listo :) " << endl;
+            }
+            
             
             navega(num);
 
@@ -90,7 +96,14 @@ int main(){
                 cout << "Número de cliente: ";
                 cin >> snum;
             }
-            num = stoi(snum); 
+            try {
+                num = stoi(snum); 
+            }
+            catch (const out_of_range & exception){
+                cout << "No te pases de listo :) " << endl;
+            }
+            
+
             
             cout << "Edad: ";
             int edad;
@@ -101,7 +114,13 @@ int main(){
                 cout << "Edad: ";
                 cin >> sedad;
             }
-            edad = stoi(sedad); 
+            try {
+                edad = stoi(sedad); 
+            }
+            catch (const out_of_range & exception){
+                cout << "No te pases de listo :) " << endl;
+            }
+            
             
             cout << "Año nacimiento:" ;
             int fech;
@@ -112,7 +131,13 @@ int main(){
                 cout << "Año nacimiento: ";
                 cin >> sfech;
             }
-            fech = stoi(sfech); 
+            try {
+                fech = stoi(sfech); 
+            }
+            catch (const out_of_range & exception){
+                cout << "No te pases de listo :) " << endl;
+            }
+       
             
             
             Persona persona(nombre, apellido, edad, fech, num);
@@ -191,7 +216,13 @@ void navega(int n){
                     cout << "ID del estado de cuenta: ";
                     cin >> sid;
                 }
-                id = stoi(sid);    
+                try {
+                    id = stoi(sid);    
+                }
+                catch (const out_of_range & exception){
+                    cout << "No te pases de listo :) " << endl;
+                }
+                
                 
                 
                 cout << "Mes: ";
@@ -207,7 +238,13 @@ void navega(int n){
                     cout << "Año: ";
                     cin >> sanio;
                 }
-                anio = stoi(sanio); 
+                try {
+                    anio = stoi(sanio);   
+                }
+                catch (const out_of_range & exception){
+                    cout << "No te pases de listo :) " << endl;
+                }
+                
                 
                 cout << "Gastos totales: ";
                 double gastos;
@@ -218,7 +255,14 @@ void navega(int n){
                     cout << "Gastos totales: ";
                     cin >> sgastos;
                 }
-                gastos = stod(sgastos); 
+                try {
+                    gastos = stod(sgastos);   
+                }
+                catch (const out_of_range & exception){
+                    cout << "No te pases de listo :) " << endl;
+                }
+                
+               
                 
                 cout << "Ingresos totales: ";
                 double ingresos;
@@ -229,7 +273,15 @@ void navega(int n){
                     cout << "Ingresos totales: ";
                     cin >> singresos;
                 }
-                ingresos = stod(singresos);
+                try {
+                    ingresos = stod(singresos); 
+                }
+                catch (const out_of_range & exception){
+                    cout << "No te pases de listo :) " << endl;
+                }
+                
+                
+                
                 
                 cout << "Notas: ";
                 string notas;
