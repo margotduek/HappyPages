@@ -16,6 +16,7 @@ Por investigar:
 #include <string>
 #include <stdexcept>
 
+
 using namespace std;
 
 
@@ -24,6 +25,8 @@ LinkedList<Persona> * personas = new LinkedList<Persona>();
 void navega(int n);
 bool valida(string a);
 bool validad(string a);
+void admin();
+char getch();
 
 int main(){
     
@@ -34,12 +37,15 @@ int main(){
     int hile = 0;
     while(hile != 666){
         cout << "1) Iniciar sesión \n2) Registarme como nuevo usuario\n3) Salir" << endl;
+        cout << "951) Soy admin" << endl;
         string sop;
         cin >> sop;
         
         while (!valida(sop)){
             cout << "Recuerda poner solamente números" << endl;
             cout << "1) Iniciar sesión \n2) Registarme como nuevo usuario\n3) Salir";
+            cout << endl;
+            cout << "951) Soy admin" << endl;
             cin >> sop;
         }
         try {
@@ -53,10 +59,14 @@ int main(){
         if (op == 1){
             cout << "Nombre: " ;
             string nombre;
-            cin >> nombre;
+            //cin >> nombre;
+            cin.ignore();
+            getline(cin,nombre);
             cout << "Apellido: " ;
             string apellido;
-            cin >> apellido;
+            //cin >> apellido;
+            cin.ignore();
+            getline(cin,apellido);
             cout << "Número de cliente: " ;
             int num;
             string snum;
@@ -82,11 +92,15 @@ int main(){
             
             cout << "Nombre: ";
             string nombre;
-            cin >> nombre;
+            //cin >> apellido;
+            cin.ignore();
+            getline(cin,nombre);
             
-            cout << "Apellido: ";
+            cout << "Apellido: " ;
             string apellido;
-            cin >> apellido;
+            //cin >> apellido;
+            //cin.ignore();
+            getline(cin,apellido);
             
             cout << "Número de cliente: " ;
             int num;
@@ -148,6 +162,8 @@ int main(){
         }else if(op == 3){
             cout << "Gracias por usar Happy Pages" << endl;
             hile = 666;
+        }else if(op == 951){
+            admin();
         }else{
              cout << "Favor de elegir una opción existente" << endl;
         }
@@ -167,7 +183,7 @@ void navega(int n){
                 persona = personas->at(i)->getInfo();
                 cout << endl;
                 
-                cout << "Bienvend@   " << persona.getNombre() << "  " << persona.getApellido() << endl;
+                cout << "Bienvend@   " << persona.getNombre() << " " << persona.getApellido() << endl;
                 registrado = true;
             }
         }
@@ -311,13 +327,18 @@ void navega(int n){
                  cout << "Ingrese el mes que desea consultar" << endl;
                  string consultarMes;
                  cin >> consultarMes;
+                 bool esta = true;
                  for(int i  = 0; i < persona.getSizeList(); ++i){
                      if(persona.getLista()->at(i)->getInfo().getMes() == consultarMes){
                          cout << persona.getLista()->at(i)->getInfo() << endl;
                      } else {
-                         cout << "Aun no has ingresado nungun estado de cuenta de ese mes" << endl;
+                         esta = false;
                      }
                  }
+                 if(!esta){
+                    cout << "Aun no has ingresado nungun estado de cuenta de ese mes" << endl;
+                 }
+                 
             }
             break;
             
@@ -325,13 +346,18 @@ void navega(int n){
                 cout << "Ingrese el año que desea consultar" << endl;
                 int consultarAnio;
                 cin >> consultarAnio;
+                bool esta = true;
                 for(int i  = 0; i < persona.getSizeList(); ++i){
                     if(persona.getLista()->at(i)->getInfo().getAnio() == consultarAnio){
                         cout << persona.getLista()->at(i)->getInfo() << endl;
                     } else {
-                        cout << "Aun no has ingresado nungun estado de cuenta de ese año" << endl;
+                        esta = false;
+                        
                     }
                 }
+                 if(!esta){
+                    cout << "Aun no has ingresado nungun estado de cuenta de ese año" << endl;
+                 }
             }
             break;
             
@@ -369,6 +395,55 @@ void navega(int n){
         
     }
 }
+
+
+
+void admin(){
+    
+    string pass ="";
+    char ch;
+    cout << "Enter pass\n";
+    ch = getchar();
+    while(ch != 't'){//character 13 is enter
+       pass.push_back(ch);
+       cout << '*';
+       ch = getchar();
+    }
+    
+    
+    cout << "\nBienvenido Administrador!\n";
+    int whila = 0;
+    int op = 0;
+    string sop;
+    while(whila != 333){
+        
+        cout << "1) Ver lista de clientes activos\n2) Borrar cliente\n3) Regresar a modo usuario" << endl;
+        cin >> sop;
+        while (!valida(sop)){
+            cout << "ponga opcion valida" << endl;
+            cout << "1) Ver lista de clientes activos\n2) Borrar cliente\n3) Regresar a modo usuario" << endl;
+            cin >> sop;
+        }
+        try {
+            op = stoi(sop);
+        }
+        catch (const out_of_range & exception){
+            cout << "No te pases de listo :) " << endl;
+        }
+        if(op == 1){
+            cout << *personas << endl;
+        }else if(op == 2){
+            //Borrar nodo
+        }else if(op == 3){
+            whila = 333;
+        }else{
+            cout << "Ponga una opcion valida " << endl;
+        }
+    }
+    
+}
+
+
 
 bool valida(string a){
     bool booleana = true;
@@ -435,3 +510,4 @@ bool validad(string a){
     return booleana;
     
 }
+
