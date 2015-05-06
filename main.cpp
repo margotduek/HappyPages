@@ -4,6 +4,11 @@ Main
 
 Por investigar:
   :)
+  
+  
+  Ejemplo del commit
+  
+  
 
 
 
@@ -16,8 +21,6 @@ Por investigar:
 
 
 using namespace std;
-
-
 LinkedList<Persona> * personas = new LinkedList<Persona>();
 
 void navega(int n);
