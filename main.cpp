@@ -425,7 +425,7 @@ void admin(){
             //getline(cin,sop);
         }
         try {
-            op = stoi(sop);
+            op = stoi(sop);     
         }
         catch (const out_of_range & exception){
             cout << "No te pases de listo :) " << endl;
