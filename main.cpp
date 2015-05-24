@@ -4,11 +4,11 @@ Main
 
 Por investigar:
   :)
-  
-  
+
+
   Ejemplo del commit
-  
-  
+
+
 
 
 
@@ -28,6 +28,7 @@ bool valida(string a);
 bool validad(string a);
 void admin();
 char getch();
+int cliente = 1;
 
 int main(){
 
@@ -103,14 +104,18 @@ int main(){
             //cin.ignore();
             getline(cin,apellido);
 
-            cout << "Número de cliente: " ;
+            cout << "Número de cliente: " << cliente << endl;
             int num;
+            num = cliente;
+            cliente ++;
+            /*
             string snum;
             cin >> snum;
             while (!valida(snum)){
                 cout << "Recuerda poner solamente números" << endl;
                 cout << "Número de cliente: ";
-                cin >> snum;
+                //cin >> snum;
+                getline(cin,snum);
             }
             try {
                 num = stoi(snum);
@@ -119,6 +124,7 @@ int main(){
                 cout << "No te pases de listo :) " << endl;
             }
 
+            */
 
 
             cout << "Edad: ";
@@ -428,7 +434,7 @@ void admin(){
             //getline(cin,sop);
         }
         try {
-            op = stoi(sop);     
+            op = stoi(sop);
         }
         catch (const out_of_range & exception){
             cout << "No te pases de listo :) " << endl;
@@ -466,7 +472,7 @@ void admin(){
             bool registrado = false;
             Node<Persona> * nodo;
             for (int i = 0; i < personas->size(); ++i){
-                if(personas->at(i)->getInfo().getNumCliente() == num){
+                if(personas->at(i)->getInfo().getNumCliente() == num && personas->at(i)->getInfo().getNombre() == nombre && personas->at(i)->getInfo().getApellido() == apellido){
                     nodo = personas->at(i);
                     cout << endl;
 
